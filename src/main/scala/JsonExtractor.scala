@@ -13,9 +13,12 @@ import com.bazaarvoice.jolt.Chainr;
 import com.bazaarvoice.jolt.JsonUtils;
 import java.io.IOException;
 import java.util.List;
+import com.data.Transformation;
 object JsonExtractor {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val input_file = "./data.json"
+    val ts = new Transformation()
+    ts.transform("a", "b")
     val chainrSpecJSON = JsonUtils.filepathToList( "./schema.json" );
     val chainr = Chainr.fromSpec( chainrSpecJSON );
     val inputJSON = JsonUtils.filepathToObject( "./data.json" );
