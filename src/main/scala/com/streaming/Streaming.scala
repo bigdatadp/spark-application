@@ -27,7 +27,8 @@ object Streaming extends AppLog{
     val topics = configContext.getString("kafka.topics")
     val sources = configContext.getString("kafka.source")
     val sink = configContext.getString("kafka.sink")
-
+    val transformers = configContext.getObjectList("transformer.chainslist")
+//    print()
     val conf = new SparkConf().setMaster(master).setAppName(appName)
     @transient val ssc = new StreamingContext(conf, Seconds(1))
 
