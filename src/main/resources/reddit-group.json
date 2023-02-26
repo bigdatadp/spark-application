@@ -1,0 +1,32 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "data": {
+        "subredditInfoByName": {
+          "elements": {
+            "edges": {
+              "*": {
+                "node": {
+                  "__typename": "[&2].typename",
+                  "discussionType": "[&2].discussionType",
+                  "flair": {
+                    "text": "[&3].flair",
+                    "template": {
+                      "textColor": "[&4].textColor"
+                    }
+                  },
+                  "authorFlair": {
+                    "text": "[&3].text"
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+]

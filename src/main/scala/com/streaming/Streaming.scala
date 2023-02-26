@@ -27,6 +27,7 @@ object Streaming extends AppLog{
     val topics = configContext.getString("kafka.topics")
     val sources = configContext.getString("kafka.source")
     val sink = configContext.getString("kafka.sink")
+
     val conf = new SparkConf().setMaster(master).setAppName(appName)
     @transient val ssc = new StreamingContext(conf, Seconds(1))
 
@@ -38,6 +39,7 @@ object Streaming extends AppLog{
             "org.apache.kafka.common.serialization.StringSerializer",
       ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG -> "org.apache.kafka.common.serialization.StringSerializer"
     )
+
 //    props.put(, sink)
 //    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
 //      "org.apache.kafka.common.serialization.StringSerializer")

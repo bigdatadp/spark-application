@@ -10,7 +10,7 @@ import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.streaming.dstream.InputDStream
 
 class KafkaSources(ssc: StreamingContext, topics: String, brokers: String, groupId: String) extends AppLog {
-  def getStream(kafkaSink: Broadcast[KafkaSink[String, String]], joltChains: Broadcast[String]) {
+  def getStream(kafkaSink: Broadcast[KafkaSink[String, String]]) {
     val topicsSet = topics.split(",").toSet
     val kafkaParams = Map[String, Object](
       ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> brokers,
@@ -29,7 +29,10 @@ class KafkaSources(ssc: StreamingContext, topics: String, brokers: String, group
         //        this.getLogger.warn(s"${o.topic} ${o.partition} ${o.fromOffset} ${o.untilOffset}")
         iter.foreach { record =>
           println(s"Sending record ${record.value()}")
-          kafkaSink.value.send(, record.value())
+
+          //effice jolt context
+
+          kafkaSink.value.send("testing", record.value())
         }
       }
     }
